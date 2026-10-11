@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLICÉ BY SUSAN</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #FFF8F0;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 6%;
+  background: #FFF8F0;
+}
+
+.logo {
+  color: #8F2929;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #302722;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background: #302722;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* DARK OVERLAY */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.1)
+  );
+}
+
+.slide-content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 500px;
+}
+
+.slide-content p {
+  letter-spacing: 3px;
+  color: #F1C9A5;
+  font-size: 12px;
+}
+
+.slide-content h1 {
+  font-size: clamp(32px, 5vw, 58px);
+  margin: 15px 0;
+}
+
+.slide-content .description {
+  color: white;
+  letter-spacing: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.order-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #8F2929;
+  color: white;
+  padding: 14px 22px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+/* PREVIOUS AND NEXT BUTTONS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  color: #8F2929;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.arrow:hover {
+  background: white;
+}
+
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.25);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .carousel {
+    height: 400px;
+  }
+
+  .slide-content {
+    left: 9%;
+    right: 9%;
+  }
+
+  .slide-content h1 {
+    font-size: 34px;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <a href="index.html" class="logo">SLICÉ BY SUSAN</a>
+  <a href="menu.html">OUR MENU ↗</a>
+</nav>
+
+<!-- IMAGE CAROUSEL -->
+<section class="carousel" aria-label="Featured pizzas">
+
+  <!-- SLIDE 1 -->
+  <div class="slide active">
+    <img src="images/pizza-1.jpg"
+         alt="Freshly baked pizza">
+
+    <div class="slide-content">
+      <p>WELCOME TO SLICÉ BY SUSAN</p>
+      <h1>A SLICE OF HAPPINESS.</h1>
+      <p class="description">
+        Freshly made. Always crave-worthy.
+      </p>
+      <a href="menu.html" class="order-btn">
+        EXPLORE OUR MENU ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <img src="images/pizza-2.jpg"
+         alt="Delicious cheesy pizza">
+
+    <div class="slide-content">
+      <p>MADE FOR PIZZA LOVERS</p>
+      <h1>CHEESY. GOLDEN. DELICIOUS.</h1>
+      <p class="description">
+        Your next favourite slice is waiting.
+      </p>
+      <a href="menu.html" class="order-btn">
+        FIND YOUR FAVOURITE ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <img src="images/pizza-3.jpg"
+         alt="Pizza fresh from the oven">
+
+    <div class="slide-content">
+      <p>GOOD FOOD, GOOD MOOD</p>
+      <h1>YOUR TABLE IS WAITING.</h1>
+      <p class="description">
+        Gather around for something delicious.
+      </p>
+      <a href="menu.html" class="order-btn">
+        VIEW OUR MENU ↗
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ARROWS -->
+  <button class="arrow prev"
+          aria-label="Previous slide">&#8249;</button>
+
+  <button class="arrow next"
+          aria-label="Next slide">&#8250;</button>
+
+  <!-- DOT INDICATORS -->
+  <div class="dots">
+    <button class="dot active" aria-label="Slide 1"></button>
+    <button class="dot" aria-label="Slide 2"></button>
+    <button class="dot" aria-label="Slide 3"></button>
+  </div>
+
+</section>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+let currentSlide = 0;
+let timer;
+
+function showSlide(index) {
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentSlide);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
+}
+
+function startTimer() {
+  clearInterval(timer);
+  timer = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
+}
+
+next.addEventListener("click", () => {
+  showSlide(currentSlide + 1);
+  startTimer();
+});
+
+prev.addEventListener("click", () => {
+  showSlide(currentSlide - 1);
+  startTimer();
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    showSlide(i);
+    startTimer();
+  });
+});
+
+startTimer();
+</script>
+
+</body>
+</html>
