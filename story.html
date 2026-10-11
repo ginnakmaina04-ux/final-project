@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Slicé by Susan</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .story-page {
+            background: #FFF8F0;
+            color: #351B18;
+            min-height: 100vh;
+            padding: 70px 10%;
+        }
+
+        .story-page .eyebrow {
+            margin-bottom: 16px;
+        }
+
+        .story-page h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(40px, 6vw, 68px);
+            max-width: 700px;
+            margin: 0 0 25px;
+        }
+
+        .story-page p {
+            max-width: 720px;
+            line-height: 1.9;
+            color: #705C55;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #8F2929;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="story-page">
+        <p class="eyebrow">THE STORY BEHIND THE SLICE</p>
+
+        <h1>Made with love. Served with flavour.</h1>
+
+        <p>
+            Welcome to Slicé by Susan, where good food and
+            good company belong at the same table.
+        </p>
+
+        <p>
+            We believe a great meal is about more than what's
+            on the plate. It's about sharing a laugh, gathering
+            with the people you love, and creating memories
+            over food worth coming back for.
+        </p>
+
+        <p>
+            Every detail of Slicé by Susan is inspired by our
+            love for flavour, comfort, and bringing people
+            together. We're happy you're here, and we can't
+            wait to be part of your next memorable meal.
+        </p>
+
+        <a href="index.html" class="back-link">
+            ← BACK TO HOME
+        </a>
+    </main>
+</body>
+
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h2>SLICÉ <span>BY SUSAN</span></h2>
+            <p>Freshly made. Lovingly served.</p>
+            <p>Good pizza, good people, good moments.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Our Menu</a>
+            <a href="story.html">Our Story</a>
+            <a href="portfolio.html">Gallery</a>
+            <a href="order.html">Order Now</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Get in Touch</h3>
+            <p>Have a question or craving?</p>
+            <a href="menu.html">Explore our menu</a>
+            <p>Phone: Add your restaurant number</p>
+            <p>Location: Add your restaurant location</p>
+        </div>
+
+        <div class="footer-socials">
+            <h3>Follow Along</h3>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">TikTok</a>
+            <a href="#" target="_blank">Facebook</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> SLICÉ BY SUSAN. All rights reserved.</p>
+        <p>Made with love and a little extra cheese. 🍕</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+</script>
+<style>
+    
+/* ===== SLICÉ BY SUSAN FOOTER ===== */
+
+.site-footer {
+    background-color: #4b1420;
+    color: #f8eee5;
+    padding: 55px 8% 0;
+    margin-top: 70px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr 1fr;
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.site-footer h2 {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.site-footer h2 span {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-top: 5px;
+}
+
+.site-footer h3 {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    color: #e7b99b;
+}
+
+.site-footer p {
+    color: #e4d3ce;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    display: block;
+    color: #f8eee5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #e7b99b;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .site-footer {
+        padding: 40px 7% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pizza Rain 🍕</title>
+
+<style>
+  .pizza {
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall 5s linear forwards;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0.4;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<script>
+  function createPizza() {
+    const pizza = document.createElement("div");
+    pizza.className = "pizza";
+    pizza.textContent = "🍕";
+
+    pizza.style.left = Math.random() * 100 + "vw";
+    pizza.style.animationDuration = (4 + Math.random() * 4) + "s";
+    pizza.style.fontSize = (15 + Math.random() * 15) + "px";
+
+    document.body.appendChild(pizza);
+
+    setTimeout(() => pizza.remove(), 8500);
+  }
+
+  setInterval(createPizza, 700);
+</script>
+
+</body>
+
+</html>

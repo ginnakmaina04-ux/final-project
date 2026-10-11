@@ -330,3 +330,661 @@ startTimer();
 
 </body>
 </html>
+
+<!-- ABOUT PREVIEW SECTION -->
+<section class="about-preview">
+    <div class="about-image">
+        <img src="images/restaurant.jpg" alt="Inside Slicé by Susan">
+    </div>
+
+    <div class="about-content">
+        <p class="eyebrow">A LITTLE ABOUT US</p>
+
+        <h2>More Than Just<br>A Slice.</h2>
+
+        <p class="about-description">
+            At Slicé by Susan, we believe great food brings
+            people together. From delicious flavours to
+            unforgettable moments, every slice has a story...
+        </p>
+
+        <a href="story.html" class="about-btn">
+            ABOUT US ↗
+        </a>
+    </div>
+</section>
+<style>
+    
+/* ABOUT PREVIEW */
+.about-preview {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    padding: 65px 9%;
+    background-color: #FFF8F0;
+    color: #351B18;
+    min-height: 320px;
+}
+
+.about-image {
+    flex: 1;
+    height: 290px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-content {
+    flex: 1;
+    max-width: 480px;
+}
+
+.eyebrow {
+    color: #8F2929;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.about-content h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    margin: 0 0 18px;
+}
+
+.about-description {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #705C55;
+    margin-bottom: 25px;
+}
+
+.about-btn {
+    display: inline-block;
+    background-color: #8F2929;
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.about-btn:hover {
+    background-color: #641B1B;
+    transform: translateY(-2px);
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 700px) {
+    .about-preview {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+        padding: 45px 7%;
+    }
+
+    .about-image {
+        height: 230px;
+    }
+
+    .about-content {
+        max-width: 100%;
+    }
+}
+
+</style>
+
+<!-- PORTFOLIO PREVIEW SECTION -->
+<section class="portfolio-preview">
+
+    <div class="portfolio-heading">
+        <p class="eyebrow">A TASTE OF SLICÉ</p>
+
+        <h2>A Feast for the Eyes.</h2>
+
+        <p class="portfolio-intro">
+            Fresh flavours, beautiful moments, and slices
+            worth remembering. Take a little look around.
+        </p>
+    </div>
+
+    <!-- Preview images -->
+    <div class="portfolio-grid">
+
+        <div class="portfolio-item">
+            <img src="images/pizza-4.jpg" alt="Freshly baked pizza">
+        </div>
+
+        <div class="portfolio-item portfolio-tall">
+            <img src="images/portfolio1.jpg" alt="A delicious pizza close-up">
+        </div>
+
+        <div class="portfolio-item">
+            <img src="images/portfolio2.jpg" alt="Pizza made for sharing">
+        </div>
+
+    </div>
+
+    <a href="portfolio.html" class="portfolio-btn">
+        VIEW OUR GALLERY ↗
+    </a>
+
+</section>
+<style>
+    
+/* PORTFOLIO PREVIEW */
+.portfolio-preview {
+    background-color: #F2E7DA;
+    color: #351B18;
+    padding: 80px 9%;
+    text-align: center;
+}
+
+.portfolio-heading {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.portfolio-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(34px, 4vw, 50px);
+    margin: 10px 0 15px;
+}
+
+.portfolio-intro {
+    color: #705C55;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* IMAGE GRID */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 1050px;
+    margin: 0 auto 38px;
+    align-items: center;
+}
+
+.portfolio-item {
+    height: 270px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.portfolio-tall {
+    height: 330px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.06);
+}
+
+/* GALLERY BUTTON */
+.portfolio-btn {
+    display: inline-block;
+    padding: 15px 28px;
+    background-color: #8F2929;
+    color: #FFF8F0;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.portfolio-btn:hover {
+    background-color: #641B1B;
+    transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .portfolio-preview {
+        padding: 55px 7%;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .portfolio-item {
+        height: 190px;
+    }
+
+    .portfolio-item:last-child {
+        display: none;
+    }
+
+    .portfolio-tall {
+        height: 220px;
+    }
+}
+
+</style>
+
+<!-- MENU PREVIEW SECTION -->
+<section class="menu-preview">
+
+    <div class="menu-heading">
+        <p class="eyebrow">A LITTLE SOMETHING DELICIOUS</p>
+        <h2>On the Menu.</h2>
+        <p class="menu-intro">
+            Made to be savoured. Created to be remembered.
+            Here's a little taste of what's waiting for you.
+        </p>
+    </div>
+
+    <div class="menu-grid">
+
+        <!-- Menu item 1 -->
+        <article class="menu-card">
+            <div class="menu-image">
+                <img src="images/margaritta.jpg" alt="Margherita pizza">
+            </div>
+            <div class="menu-card-info">
+                <div class="menu-title-row">
+                    <h3>Margherita</h3>
+                    <span class="menu-price">KSh 800</span>
+                </div>
+                <p>Classic tomato, mozzarella, and fragrant basil.</p>
+            </div>
+        </article>
+
+        <!-- Menu item 2 -->
+        <article class="menu-card">
+            <div class="menu-image">
+                <img src="images/pepperoni.jpg" alt="Pepperoni pizza">
+            </div>
+            <div class="menu-card-info">
+                <div class="menu-title-row">
+                    <h3>Pepperoni</h3>
+                    <span class="menu-price">KSh 1,000</span>
+                </div>
+                <p>Golden cheese, rich tomato sauce, and pepperoni.</p>
+            </div>
+        </article>
+
+        <!-- Menu item 3 -->
+        <article class="menu-card">
+            <div class="menu-image">
+                <img src="images/chickenbbq.jpg" alt="Barbecue chicken pizza">
+            </div>
+            <div class="menu-card-info">
+                <div class="menu-title-row">
+                    <h3>BBQ Chicken</h3>
+                    <span class="menu-price">KSh 1,200</span>
+                </div>
+                <p>Smoky barbecue sauce, chicken, and melted cheese.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <a href="menu.html" class="menu-btn">
+        VIEW FULL MENU ↗
+    </a>
+
+</section>
+<style>
+    
+/* MENU PREVIEW */
+.menu-preview {
+    background-color: #FFF8F0;
+    color: #351B18;
+    padding: 85px 9%;
+    text-align: center;
+}
+
+.menu-heading {
+    max-width: 620px;
+    margin: 0 auto 45px;
+}
+
+.menu-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 4vw, 52px);
+    margin: 12px 0;
+}
+
+.menu-intro {
+    color: #705C55;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* MENU CARDS */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto 42px;
+    text-align: left;
+}
+
+.menu-card {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    border: 1px solid #E9DCD0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(53, 27, 24, 0.10);
+}
+
+.menu-image {
+    height: 230px;
+    overflow: hidden;
+}
+
+.menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.menu-card:hover .menu-image img {
+    transform: scale(1.05);
+}
+
+.menu-card-info {
+    padding: 22px 20px 24px;
+}
+
+.menu-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.menu-title-row h3 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    margin: 0;
+}
+
+.menu-price {
+    color: #8F2929;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.menu-card-info p {
+    color: #705C55;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 12px 0 0;
+}
+
+/* FULL MENU BUTTON */
+.menu-btn {
+    display: inline-block;
+    background-color: #8F2929;
+    color: #FFF8F0;
+    text-decoration: none;
+    padding: 15px 28px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: #641B1B;
+    transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .menu-image {
+        height: 190px;
+    }
+
+    .menu-card-info {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .menu-preview {
+        padding: 60px 6%;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-image {
+        height: 240px;
+    }
+}
+
+</style>
+
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h2>SLICÉ <span>BY SUSAN</span></h2>
+            <p>Freshly made. Lovingly served.</p>
+            <p>Good pizza, good people, good moments.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Our Menu</a>
+            <a href="story.html">Our Story</a>
+            <a href="portfolio.html">Gallery</a>
+            <a href="order.html">Order Now</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Get in Touch</h3>
+            <p>Have a question or craving?</p>
+            <a href="menu.html">Explore our menu</a>
+            <p>Phone: Add your restaurant number</p>
+            <p>Location: Add your restaurant location</p>
+        </div>
+
+        <div class="footer-socials">
+            <h3>Follow Along</h3>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">TikTok</a>
+            <a href="#" target="_blank">Facebook</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> SLICÉ BY SUSAN. All rights reserved.</p>
+        <p>Made with love and a little extra cheese. 🍕</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+</script>
+<style>
+    
+/* ===== SLICÉ BY SUSAN FOOTER ===== */
+
+.site-footer {
+    background-color: #4b1420;
+    color: #f8eee5;
+    padding: 55px 8% 0;
+    margin-top: 70px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr 1fr;
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.site-footer h2 {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.site-footer h2 span {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-top: 5px;
+}
+
+.site-footer h3 {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    color: #e7b99b;
+}
+
+.site-footer p {
+    color: #e4d3ce;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    display: block;
+    color: #f8eee5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #e7b99b;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .site-footer {
+        padding: 40px 7% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pizza Rain 🍕</title>
+
+<style>
+  .pizza {
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall 5s linear forwards;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0.4;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<script>
+  function createPizza() {
+    const pizza = document.createElement("div");
+    pizza.className = "pizza";
+    pizza.textContent = "🍕";
+
+    pizza.style.left = Math.random() * 100 + "vw";
+    pizza.style.animationDuration = (4 + Math.random() * 4) + "s";
+    pizza.style.fontSize = (15 + Math.random() * 15) + "px";
+
+    document.body.appendChild(pizza);
+
+    setTimeout(() => pizza.remove(), 8500);
+  }
+
+  setInterval(createPizza, 700);
+</script>
+
+</body>
+</html>

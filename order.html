@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Order | Slicé by Susan</title>
+<script src="menu-data.js" defer></script>
+
+<style>
+:root {
+    --cream: #FFF8F0;
+    --burgundy: #8F2929;
+    --dark: #351B18;
+    --muted: #705C55;
+    --border: #E9DCD0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--cream); color: var(--dark); font-family: Arial, sans-serif; }
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px; padding: 22px 8%; border-bottom: 1px solid var(--border);
+}
+.logo { color: var(--burgundy); text-decoration: none; font: bold 23px Georgia, serif; }
+nav a:not(.logo) { font-size: 12px; text-decoration: none; }
+.hero { text-align: center; padding: 55px 20px; background: #F2E7DA; }
+.eyebrow { color: var(--burgundy); font-size: 11px; font-weight: bold; letter-spacing: 3px; }
+h1, h2, h3 { font-family: Georgia, serif; font-weight: normal; }
+.hero h1 { font-size: clamp(40px, 6vw, 60px); margin: 12px 0; }
+.hero p:last-child { color: var(--muted); font-size: 14px; }
+.layout {
+    max-width: 1100px; margin: 40px auto 70px; padding: 0 22px;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; align-items: start;
+}
+.panel { background: white; border: 1px solid var(--border); padding: 26px; }
+.panel h2 { font-size: 28px; margin: 0 0 22px; }
+.cart-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    padding: 17px 0; border-bottom: 1px solid var(--border);
+}
+.item-name { font-weight: bold; font-size: 14px; }
+.item-price { display: block; color: var(--burgundy); font-size: 13px; margin-top: 6px; }
+.item-controls { display: flex; align-items: center; gap: 8px; }
+.qty-input { width: 58px; padding: 8px 4px; text-align: center; border: 1px solid var(--border); }
+.remove-btn { border: 0; background: transparent; color: var(--burgundy); cursor: pointer; font-size: 12px; }
+.empty { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.empty a { color: var(--burgundy); }
+.form-group { margin-bottom: 19px; }
+label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 8px; }
+input, select, textarea {
+    width: 100%; padding: 12px; border: 1px solid #D8C9BD;
+    border-radius: 3px; background: white; color: var(--dark); font: inherit; font-size: 14px;
+}
+textarea { min-height: 85px; resize: vertical; }
+.total-line {
+    display: flex; justify-content: space-between; gap: 15px;
+    padding-top: 22px; margin-top: 8px; font-size: 18px; font-weight: bold;
+}
+.total-line strong { color: var(--burgundy); }
+.primary-btn {
+    display: block; width: 100%; margin-top: 22px; padding: 15px;
+    border: 0; background: var(--burgundy); color: white;
+    font-size: 12px; font-weight: bold; letter-spacing: 1px; cursor: pointer;
+}
+.primary-btn:hover { background: #641B1B; }
+.primary-btn:disabled { opacity: .5; cursor: not-allowed; }
+.note { color: var(--muted); font-size: 12px; line-height: 1.7; }
+footer { background: #291613; color: var(--cream); text-align: center; padding: 28px 15px; font-size: 12px; }
+@media(max-width: 760px) {
+    .layout { grid-template-columns: 1fr; padding: 0 14px; margin-top: 22px; }
+    .panel { padding: 20px; }
+    nav { padding: 18px 5%; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+    <a href="index.html" class="logo">SLICÉ BY SUSAN</a>
+    <a href="menu.html">← CONTINUE SHOPPING</a>
+</nav>
+
+<header class="hero">
+    <p class="eyebrow">ALMOST TIME TO EAT</p>
+    <h1>Your Order.</h1>
+    <p>Check your choices, enter your details, and you're nearly there.</p>
+</header>
+
+<main class="layout">
+    <section class="panel">
+        <h2>Your Selection</h2>
+        <div id="cartItems"></div>
+
+        <div class="total-line">
+            <span>Food total</span>
+            <strong id="cartTotal">KSh 0</strong>
+        </div>
+        <p class="note">
+            Delivery fees, if applicable, are confirmed by the restaurant.
+        </p>
+        <a href="menu.html" style="color:#8F2929;font-size:13px;">+ Add more items</a>
+    </section>
+
+    <section class="panel">
+        <h2>Delivery Details</h2>
+
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="name">Full name *</label>
+                <input id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Your phone number *</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel"
+                       placeholder="e.g. 0712345678" required>
+            </div>
+
+            <div class="form-group">
+                <label for="orderType">Choose an option *</label>
+                <select id="orderType" name="orderType" required>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Pickup">Pickup</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="addressGroup">
+                <label for="address">Delivery location *</label>
+                <textarea id="address" name="address" autocomplete="street-address"
+                    placeholder="Area, estate, building and delivery instructions"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="instructions">Special instructions</label>
+                <textarea id="instructions" name="instructions"
+                    placeholder="Optional requests about your order"></textarea>
+            </div>
+
+            <button class="primary-btn" id="checkoutBtn" type="submit">
+                SEND ORDER VIA WHATSAPP ↗
+            </button>
+
+            <p class="note">
+                WhatsApp will open with your order details ready to send.
+                Your order is not confirmed until the restaurant responds.
+            </p>
+        </form>
+    </section>
+</main>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h2>SLICÉ <span>BY SUSAN</span></h2>
+            <p>Freshly made. Lovingly served.</p>
+            <p>Good pizza, good people, good moments.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Our Menu</a>
+            <a href="story.html">Our Story</a>
+            <a href="portfolio.html">Gallery</a>
+            <a href="order.html">Order Now</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Get in Touch</h3>
+            <p>Have a question or craving?</p>
+            <a href="menu.html">Explore our menu</a>
+            <p>Phone: Add your restaurant number</p>
+            <p>Location: Add your restaurant location</p>
+        </div>
+
+        <div class="footer-socials">
+            <h3>Follow Along</h3>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">TikTok</a>
+            <a href="#" target="_blank">Facebook</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> SLICÉ BY SUSAN. All rights reserved.</p>
+        <p>Made with love and a little extra cheese. 🍕</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+</script>
+<style>
+    
+/* ===== SLICÉ BY SUSAN FOOTER ===== */
+
+.site-footer {
+    background-color: #4b1420;
+    color: #f8eee5;
+    padding: 55px 8% 0;
+    margin-top: 70px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr 1fr;
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.site-footer h2 {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.site-footer h2 span {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-top: 5px;
+}
+
+.site-footer h3 {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    color: #e7b99b;
+}
+
+.site-footer p {
+    color: #e4d3ce;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    display: block;
+    color: #f8eee5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #e7b99b;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .site-footer {
+        padding: 40px 7% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pizza Rain 🍕</title>
+
+<style>
+  .pizza {
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall 5s linear forwards;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0.4;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<script>
+  function createPizza() {
+    const pizza = document.createElement("div");
+    pizza.className = "pizza";
+    pizza.textContent = "🍕";
+
+    pizza.style.left = Math.random() * 100 + "vw";
+    pizza.style.animationDuration = (4 + Math.random() * 4) + "s";
+    pizza.style.fontSize = (15 + Math.random() * 15) + "px";
+
+    document.body.appendChild(pizza);
+
+    setTimeout(() => pizza.remove(), 8500);
+  }
+
+  setInterval(createPizza, 700);
+</script>
+
+</body>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Replace this with the restaurant's real WhatsApp number.
+    // Kenyan format: 254 followed by the 9-digit phone number.
+    const RESTAURANT_WHATSAPP = "2547XXXXXXXX";
+
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    const orderType = document.getElementById("orderType");
+    const address = document.getElementById("address");
+    const addressGroup = document.getElementById("addressGroup");
+
+    function renderCart() {
+        const cart = getCart();
+
+        const selected = MENU_ITEMS.filter(item => (cart[item.id] || 0) > 0);
+        cartItems.replaceChildren();
+
+        if (selected.length === 0) {
+            const empty = document.createElement("p");
+            empty.className = "empty";
+            empty.textContent = "Your cart is empty. ";
+            const link = document.createElement("a");
+            link.href = "menu.html";
+            link.textContent = "Browse the menu";
+            empty.appendChild(link);
+            cartItems.appendChild(empty);
+        } else {
+            selected.forEach(item => {
+                const row = document.createElement("div");
+                row.className = "cart-row";
+
+                const details = document.createElement("div");
+                const name = document.createElement("div");
+                name.className = "item-name";
+                name.textContent = item.name;
+
+                const price = document.createElement("span");
+                price.className = "item-price";
+                price.textContent = formatPrice(item.price * cart[item.id]);
+
+                details.append(name, price);
+
+                const controls = document.createElement("div");
+                controls.className = "item-controls";
+
+                const qty = document.createElement("input");
+                qty.className = "qty-input";
+                qty.type = "number";
+                qty.min = "0";
+                qty.max = "50";
+                qty.step = "1";
+                qty.value = cart[item.id];
+                qty.setAttribute("aria-label", item.name + " quantity");
+
+                qty.addEventListener("change", () => {
+                    setCartQuantity(item.id, qty.value);
+                    renderCart();
+                });
+
+                const remove = document.createElement("button");
+                remove.className = "remove-btn";
+                remove.type = "button";
+                remove.textContent = "REMOVE";
+                remove.addEventListener("click", () => {
+                    setCartQuantity(item.id, 0);
+                    renderCart();
+                });
+
+                controls.append(qty, remove);
+                row.append(details, controls);
+                cartItems.appendChild(row);
+            });
+        }
+
+        cartTotal.textContent = formatPrice(getCartTotal());
+        checkoutBtn.disabled = selected.length === 0;
+    }
+
+    function updateOrderType() {
+        const isDelivery = orderType.value === "Delivery";
+        addressGroup.hidden = !isDelivery;
+        address.required = isDelivery;
+    }
+
+    orderType.addEventListener("change", updateOrderType);
+    updateOrderType();
+
+    document.getElementById("checkoutForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const cart = getCart();
+        const selected = MENU_ITEMS.filter(item => (cart[item.id] || 0) > 0);
+
+        if (selected.length === 0) {
+            alert("Please add at least one item to your order.");
+            return;
+        }
+
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const type = orderType.value;
+        const location = address.value.trim();
+        const instructions = document.getElementById("instructions").value.trim();
+
+        if (!name || !phone || (type === "Delivery" && !location)) {
+            alert("Please complete all required details.");
+            return;
+        }
+
+        if (!/^[0-9+()\s-]{7,20}$/.test(phone)) {
+            alert("Please enter a valid phone number.");
+            return;
+        }
+
+        if (!/^254\d{9}$/.test(RESTAURANT_WHATSAPP)) {
+            alert("Please set the restaurant's real WhatsApp number in order.html first.");
+            return;
+        }
+
+        const total = selected.reduce(
+            (sum, item) => sum + item.price * cart[item.id], 0
+        );
+
+        const message = [
+            "🍕 *NEW ORDER - SLICÉ BY SUSAN*",
+            "",
+            `*Customer:* ${name}`,
+            `*Phone:* ${phone}`,
+            `*Order type:* ${type}`,
+            ...(type === "Delivery" ? [`*Delivery location:* ${location}`] : []),
+            "",
+            "*ORDER ITEMS*",
+            ...selected.map(item =>
+                `• ${item.name} x ${cart[item.id]} - ${formatPrice(item.price * cart[item.id])}`
+            ),
+            "",
+            `*FOOD TOTAL: ${formatPrice(total)}*`,
+            ...(instructions ? ["", `*Instructions:* ${instructions}`] : []),
+            "",
+            "Please confirm this order and any delivery charges."
+        ].join("\n");
+
+        const url = "https://wa.me/" + RESTAURANT_WHATSAPP +
+            "?text=" + encodeURIComponent(message);
+
+        window.open(url, "_blank", "noopener,noreferrer");
+    });
+
+    // Refresh the cart when a customer returns to this page.
+    window.addEventListener("pageshow", renderCart);
+
+    renderCart();
+});
+</script>
+</body>
+</html>
